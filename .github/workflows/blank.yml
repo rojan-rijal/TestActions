@@ -1,14 +1,14 @@
-name: CI
-
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
-  build:
-
+  detect_tests:
     runs-on: ubuntu-latest
-
+    name: A workflow to test the work of DataSecure
     steps:
-    - uses: actions/checkout@v1
-    - name: Run a multi-line script
-      run: |
-        bash test.sh
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: CodeAnalysis
+      uses: bugbounty-site/DataSecure@master
